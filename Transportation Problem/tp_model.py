@@ -26,7 +26,7 @@ def solve(n, m, c):
     model.update()
     
     # Add constraints
-    # Each supplier doesn't exceed capacity
+    # Each supplier keeps the capacity
     for supply in range(len(n)):
         model.addConstr(quicksum(x[supply, demand] for demand in range(len(m))) <= n[supply])
     

@@ -30,9 +30,11 @@ def solve(s, m, b):
     model.update()
     
     # Add constraints
+    # Each item is assigned to exactly one bin
     for item in range(len(s)):
         model.addConstr(quicksum(x[item, bin] for bin in range(m)) == 1)
     
+    # Each bin keeps the capacity
     for bin in range(m):
         model.addConstr(quicksum(x[item, bin] * s[item] for item in range(len(s))) <= b * y[bin])
     

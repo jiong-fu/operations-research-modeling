@@ -25,6 +25,7 @@ def solve(s, p, b):
     model.update()
     
     # Add constraints
+    # The knapsack keeps the capacity
     model.addConstr(quicksum(x[item] * s[item] for item in range(len(s))) <= b)
     
     # Set objective function
